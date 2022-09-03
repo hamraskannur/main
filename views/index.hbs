@@ -1,0 +1,53 @@
+
+
+    <div class="login">
+        <form class="login-container" method="post" action="/">
+            <h1 class="h1">login page</h1>
+            <div class="input-container">
+                <p><input type="email" id="userEmail" placeholder="Email" name="email" /></p>
+                <p><input type="password" id="userPassword"  placeholder="Password" name="password" /></p>
+                <p><input class="first" id="btn-submit" type="submit" value="Log in" /></p>
+            </div>
+        </form>
+    </div>
+   
+<script>
+    $(document).ready(function() { 
+     
+      $('#btn-submit').click(function() {  
+          $(".error").hide();
+          var hasError = false;
+          var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+   
+          var emailaddressVal = $("#userEmail").val();
+           var PasswordVal = $("#userPassword").val();
+         
+          if(emailaddressVal == '') {
+              $("#userEmail").after('<span class="error text-danger">Please enter your email address.</span>');
+              hasError = true;
+          }
+   
+          else if(!emailReg.test(emailaddressVal)) {
+              $("#userEmail").after('<span class="error text-danger" >Enter a valid email address.</span>');
+              hasError = true;
+          }
+          else  if(emailaddressVal !== "hamraskk@gmail.com") {
+              $("#userEmail").after('<span class="error text-danger">Incorrect Email or Password</span>');
+              hasError = true;
+          }
+           if(PasswordVal == '') {
+              $("#userPassword").after('<span class="error text-danger">Please enter your password.</span>');
+              hasError = true;
+          }
+          else  if(PasswordVal !== "12345") {
+              $("#userPassword").after('<span class="error text-danger">Incorrect Email or Password</span>');
+              hasError = true;
+          }
+          if(hasError == true) { return false; }
+   
+      });
+     
+
+  });
+  
+</script>
